@@ -49,5 +49,7 @@ Please ensure you have the following installed:
 1. ~~Create CRUD endpoints~~
 2. ~~Create Postman collection~~
 3. ~~Create Documentation~~
-4. Create tests
-5. Expand error handling and reporting
+4. ~~Create tests~~
+5. Containerize Application with Docker
+6. Run on K8S Cluster
+7. Setup GitHub Actions
