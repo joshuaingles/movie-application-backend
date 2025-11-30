@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="io.github.joshuaingles.MovieServiceUnitTest" time="0.206" tests="13" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="io.github.joshuaingles.MovieRepositoryUnitTest" time="3.9" tests="5" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -65,17 +65,238 @@
     <property name="java.class.version" value="65.0"/>
     <property name="LOGGED_APPLICATION_NAME" value="[movie-application] "/>
   </properties>
-  <testcase name="getMovie_found_returnsOptionalWithMovie" classname="io.github.joshuaingles.MovieServiceUnitTest" time="0.16"/>
-  <testcase name="getMovies_noFilters_callsFindAll" classname="io.github.joshuaingles.MovieServiceUnitTest" time="0.002"/>
-  <testcase name="createMovies_savesOnlyNonExistingMovies" classname="io.github.joshuaingles.MovieServiceUnitTest" time="0.005"/>
-  <testcase name="createMovie_conflict_returnsNullWhenExists" classname="io.github.joshuaingles.MovieServiceUnitTest" time="0.002"/>
-  <testcase name="getMovie_notFound_returnsEmptyOptional" classname="io.github.joshuaingles.MovieServiceUnitTest" time="0.0"/>
-  <testcase name="deleteMovie_callsRepositoryDelete" classname="io.github.joshuaingles.MovieServiceUnitTest" time="0.006"/>
-  <testcase name="getMovies_withBothFilters_callsReleaseYearAndGenreRepoMethod" classname="io.github.joshuaingles.MovieServiceUnitTest" time="0.003"/>
-  <testcase name="updateMovie_success_updatesFieldsAndReturnsSaved" classname="io.github.joshuaingles.MovieServiceUnitTest" time="0.003"/>
-  <testcase name="getMovies_withReleaseYearOnly_callsReleaseYearRepoMethod" classname="io.github.joshuaingles.MovieServiceUnitTest" time="0.002"/>
-  <testcase name="updateMovie_notFound_throwsNoSuchElementException" classname="io.github.joshuaingles.MovieServiceUnitTest" time="0.0"/>
-  <testcase name="createMovies_skipsExistingAndSavesOthers" classname="io.github.joshuaingles.MovieServiceUnitTest" time="0.006"/>
-  <testcase name="getMovies_withGenreOnly_callsGenreRepoMethod" classname="io.github.joshuaingles.MovieServiceUnitTest" time="0.005"/>
-  <testcase name="createMovie_success_returnsSavedMovie" classname="io.github.joshuaingles.MovieServiceUnitTest" time="0.003"/>
+  <testcase name="findByReleaseYear_returnsMovies_forYear" classname="io.github.joshuaingles.MovieRepositoryUnitTest" time="0.225">
+    <system-out><![CDATA[18:05:52.330 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [io.github.joshuaingles.MovieRepositoryUnitTest]: MovieRepositoryUnitTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+18:05:52.515 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration io.github.joshuaingles.MovieApplicationBackend for test class io.github.joshuaingles.MovieRepositoryUnitTest
+18:05:52.600 [main] INFO org.springframework.boot.devtools.restart.RestartApplicationListener -- Restart disabled due to context in which it is running
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.3)
+
+2025-11-30T18:05:52.999-05:00  INFO 19988 --- [movie-application] [           main] i.g.j.MovieRepositoryUnitTest            : Starting MovieRepositoryUnitTest using Java 21.0.8 with PID 19988 (started by joshu in C:\Users\joshu\OneDrive\Desktop\Projects\movie-application-backend\movie-application-backend)
+2025-11-30T18:05:52.999-05:00  INFO 19988 --- [movie-application] [           main] i.g.j.MovieRepositoryUnitTest            : No active profile set, falling back to 1 default profile: "default"
+2025-11-30T18:05:53.463-05:00  INFO 19988 --- [movie-application] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-30T18:05:53.514-05:00  INFO 19988 --- [movie-application] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 42 ms. Found 1 JPA repository interface.
+2025-11-30T18:05:53.602-05:00  INFO 19988 --- [movie-application] [           main] beddedDataSourceBeanFactoryPostProcessor : Replacing 'dataSource' DataSource bean with embedded version
+2025-11-30T18:05:53.770-05:00  INFO 19988 --- [movie-application] [           main] o.s.j.d.e.EmbeddedDatabaseFactory        : Starting embedded database: url='jdbc:h2:mem:fc3bc55e-0287-49d7-b3ff-a6c67b494dda;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false', username='sa'
+2025-11-30T18:05:54.088-05:00  INFO 19988 --- [movie-application] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-30T18:05:54.146-05:00  INFO 19988 --- [movie-application] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.8.Final
+2025-11-30T18:05:54.175-05:00  INFO 19988 --- [movie-application] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-11-30T18:05:54.315-05:00  INFO 19988 --- [movie-application] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-30T18:05:54.361-05:00  WARN 19988 --- [movie-application] [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-11-30T18:05:54.380-05:00  INFO 19988 --- [movie-application] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory$EmbeddedDataSourceProxy@2b400bd0']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-11-30T18:05:55.104-05:00  INFO 19988 --- [movie-application] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: 
+    drop table if exists movie cascade 
+Hibernate: 
+    drop table if exists movie_genres cascade 
+Hibernate: 
+    create table movie (
+        id bigint generated by default as identity,
+        release_year varchar(255),
+        title varchar(255),
+        primary key (id)
+    )
+Hibernate: 
+    create table movie_genres (
+        movie_id bigint not null,
+        genres varchar(255)
+    )
+Hibernate: 
+    alter table if exists movie_genres 
+       add constraint FKs2xl3sirbon75mjcongwhrbi3 
+       foreign key (movie_id) 
+       references movie
+2025-11-30T18:05:55.158-05:00  INFO 19988 --- [movie-application] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-30T18:05:55.633-05:00  INFO 19988 --- [movie-application] [           main] i.g.j.MovieRepositoryUnitTest            : Started MovieRepositoryUnitTest in 3.053 seconds (process running for 5.207)
+Hibernate: 
+    insert 
+    into
+        movie
+        (release_year, title, id) 
+    values
+        (?, ?, default)
+Hibernate: 
+    insert 
+    into
+        movie
+        (release_year, title, id) 
+    values
+        (?, ?, default)
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.release_year,
+        m1_0.title 
+    from
+        movie m1_0 
+    where
+        m1_0.release_year=?
+]]></system-out>
+  </testcase>
+  <testcase name="findByTitleAndReleaseYear_returnsNull_whenNotFound" classname="io.github.joshuaingles.MovieRepositoryUnitTest" time="0.012">
+    <system-out><![CDATA[Hibernate: 
+    select
+        m1_0.id,
+        m1_0.release_year,
+        m1_0.title 
+    from
+        movie m1_0 
+    where
+        m1_0.title=? 
+        and m1_0.release_year=?
+]]></system-out>
+  </testcase>
+  <testcase name="findByGenresContaining_returnsMovies_withGenre" classname="io.github.joshuaingles.MovieRepositoryUnitTest" time="0.036">
+    <system-out><![CDATA[Hibernate: 
+    insert 
+    into
+        movie
+        (release_year, title, id) 
+    values
+        (?, ?, default)
+Hibernate: 
+    insert 
+    into
+        movie
+        (release_year, title, id) 
+    values
+        (?, ?, default)
+Hibernate: 
+    insert 
+    into
+        movie
+        (release_year, title, id) 
+    values
+        (?, ?, default)
+Hibernate: 
+    insert 
+    into
+        movie_genres
+        (movie_id, genres) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        movie_genres
+        (movie_id, genres) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        movie_genres
+        (movie_id, genres) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        movie_genres
+        (movie_id, genres) 
+    values
+        (?, ?)
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.release_year,
+        m1_0.title 
+    from
+        movie m1_0 
+    where
+        ? in (select
+            g1_0.genres 
+        from
+            movie_genres g1_0 
+        where
+            m1_0.id=g1_0.movie_id)
+]]></system-out>
+  </testcase>
+  <testcase name="findByTitleAndReleaseYear_returnsMovie_whenExists" classname="io.github.joshuaingles.MovieRepositoryUnitTest" time="0.011">
+    <system-out><![CDATA[Hibernate: 
+    insert 
+    into
+        movie
+        (release_year, title, id) 
+    values
+        (?, ?, default)
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.release_year,
+        m1_0.title 
+    from
+        movie m1_0 
+    where
+        m1_0.title=? 
+        and m1_0.release_year=?
+]]></system-out>
+  </testcase>
+  <testcase name="findByReleaseYearAndGenresContaining_returnsMatchingMovies" classname="io.github.joshuaingles.MovieRepositoryUnitTest" time="0.016">
+    <system-out><![CDATA[Hibernate: 
+    insert 
+    into
+        movie
+        (release_year, title, id) 
+    values
+        (?, ?, default)
+Hibernate: 
+    insert 
+    into
+        movie
+        (release_year, title, id) 
+    values
+        (?, ?, default)
+Hibernate: 
+    insert 
+    into
+        movie_genres
+        (movie_id, genres) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        movie_genres
+        (movie_id, genres) 
+    values
+        (?, ?)
+Hibernate: 
+    insert 
+    into
+        movie_genres
+        (movie_id, genres) 
+    values
+        (?, ?)
+Hibernate: 
+    select
+        m1_0.id,
+        m1_0.release_year,
+        m1_0.title 
+    from
+        movie m1_0 
+    where
+        m1_0.release_year=? 
+        and ? in (select
+            g1_0.genres 
+        from
+            movie_genres g1_0 
+        where
+            m1_0.id=g1_0.movie_id)
+]]></system-out>
+  </testcase>
 </testsuite>
