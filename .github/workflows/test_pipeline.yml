@@ -35,12 +35,12 @@ jobs:
         run: ./mvnw clean verify
 
   # --------------------------------------------------------
-  # JOB 2: Promotion to Staging
+  # JOB 2: Promote to Staging
   # --------------------------------------------------------
   push-to-staging:
     runs-on: ubuntu-latest
     needs: all-tests
-    name: Promotion to Staging (2/2)
+    name: Promote to Staging (2/2)
     
     steps:
       - name: Checkout code (test) (1/3)
