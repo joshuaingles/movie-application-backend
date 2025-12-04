@@ -1,6 +1,0 @@
-io\github\joshuaingles\MovieApplicationBackend.class
-io\github\joshuaingles\Controller\MovieController.class
-io\github\joshuaingles\Repository\MovieRepository.class
-io\github\joshuaingles\Entity\Movie$MovieBuilder.class
-io\github\joshuaingles\Service\MovieService.class
-io\github\joshuaingles\Entity\Movie.class
