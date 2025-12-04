@@ -61,7 +61,7 @@ jobs:
 
           git fetch origin
 
-          git checkout -b test origin/staging
+          git checkout -b staging origin/staging
 
           git merge -X theirs origin/test --no-ff --allow-unrelated-histories -m "Merge test into staging for promotion"
           
