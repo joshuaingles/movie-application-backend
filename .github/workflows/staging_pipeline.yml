@@ -13,7 +13,7 @@ jobs:
   # --------------------------------------------------------
   build-image:
     runs-on: ubuntu-latest
-    name: Build & Publish Docker Image
+    name: Build & Publish Docker Image (1/2)
     
     steps:
       - name: Checkout code (1/6)
@@ -43,11 +43,11 @@ jobs:
       - name: Build and Push Docker Image (6/6)
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: movie-application-backend/
           push: true
           tags: |
-            myuser/movie-application-backend:latest
-            myuser/movie-application-backend:latest-${{ github.sha }}
+            ${{ secrets.DOCKER_USERNAME }}/movie-application-backend:latest
+            ${{ secrets.DOCKER_USERNAME }}/movie-application-backend:${{ github.sha }}
 
   # --------------------------------------------------------
   # JOB 2: Promote to Main
