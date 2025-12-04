@@ -28,6 +28,7 @@ jobs:
           cache: 'maven'
 
       - name: Run All Tests
+        working-directory: movie-application-backend
         run: ./mvnw clean verify
 
   # --------------------------------------------------------
