@@ -51,6 +51,10 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
 
+      - name: Grant Execute Permission to Maven Wrapper
+        working-directory: movie-application-backend
+        run: chmod +x mvnw
+
       - name: Push Changes to Staging
         run: |
           echo "Promoting changes from 'test' to 'staging' branch..."
