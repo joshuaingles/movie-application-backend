@@ -60,8 +60,6 @@ jobs:
         
           git fetch origin
     
-          git checkout test
-    
-          git merge origin/dev --no-ff --allow-unrelated-histories -m "Merge dev into test for promotion"
-    
-          git push origin test
+          git branch -f test origin/dev
+
+          git push origin test --force
