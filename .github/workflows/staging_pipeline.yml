@@ -1,0 +1,82 @@
+# .github/workflows/staging_pipeline.yml
+
+name: 3. - Staging Pipeline
+
+on:
+  push:
+    branches:
+      - staging
+
+jobs:
+  # --------------------------------------------------------
+  # JOB 1: Build Docker Image and Publish
+  # --------------------------------------------------------
+  build-image:
+    runs-on: ubuntu-latest
+    name: Build & Publish Docker Image (1/2)
+    
+    steps:
+      - name: Checkout code (1/6)
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21 (2/6)
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: 'maven'
+
+      - name: Grant Execute Permission to Maven Wrapper (3/6)
+        working-directory: movie-application-backend
+        run: chmod +x mvnw
+
+      - name: Build JAR (4/6)
+        working-directory: movie-application-backend
+        run: ./mvnw clean package -DskipTests
+
+      - name: Login to Docker Hub (5/6)
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          
+      - name: Build and Push Docker Image (6/6)
+        uses: docker/build-push-action@v5
+        with:
+          context: movie-application-backend/
+          push: true
+          tags: |
+            ${{ secrets.DOCKER_USERNAME }}/movie-application-backend:latest
+            ${{ secrets.DOCKER_USERNAME }}/movie-application-backend:${{ github.sha }}
+
+  # --------------------------------------------------------
+  # JOB 2: Promote to Main
+  # --------------------------------------------------------
+  push-to-main:
+    runs-on: ubuntu-latest
+    needs: build-image
+    name: Promote to Main (2/2)
+    
+    steps:
+      - name: Checkout code (staging) (1/3)
+        uses: actions/checkout@v4
+        with:
+          ref: staging
+          token: ${{ secrets.CI_TRIGGER_TOKEN }}
+
+      - name: Configure Git (2/3)
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+
+      - name: Promote to Main (3/3)
+        run: |
+          echo "Promoting changes from 'staging' to 'main' branch..."
+
+          git fetch origin
+
+          git checkout -b main origin/main
+
+          git merge -X theirs origin/staging --no-ff --allow-unrelated-histories -m "Merge staging into main for promotion"
+          
+          git push origin main

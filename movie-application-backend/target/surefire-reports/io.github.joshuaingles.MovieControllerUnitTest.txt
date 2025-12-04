@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: io.github.joshuaingles.MovieControllerUnitTest
+-------------------------------------------------------------------------------
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.023 s -- in io.github.joshuaingles.MovieControllerUnitTest

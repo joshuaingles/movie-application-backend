@@ -1,0 +1,209 @@
+{
+	"info": {
+		"_postman_id": "224511c1-18c9-4f1f-9867-6b40d575f324",
+		"name": "Movie Application Testing",
+		"description": "This collection is used for seamlessly testing the CRUD endpoint of the Movie API.\n\nUse the default data for the bulk upload to prepopulate the H2 DB.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49295948",
+		"_collection_link": "https://www.postman.com/joshua-ingles-e73d21eb-9910058/workspace/joshua-ingles-s-workspace/collection/49295948-224511c1-18c9-4f1f-9867-6b40d575f324?action=share&source=collection_link&creator=49295948"
+	},
+	"item": [
+		{
+			"name": "createMovie",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Bugonia\",   \r\n    \"releaseYear\": \"2025\",    \r\n    \"genres\": [\"Science Fiction\", \"Comedy\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/v1/movies",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"movies"
+					]
+				},
+				"description": "This endpopint creates a single `Movie` resource."
+			},
+			"response": []
+		},
+		{
+			"name": "getMovie",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/v1/movies/:id",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				},
+				"description": "This endpoint retrieves a single `Movie` resource based on provided **id**."
+			},
+			"response": []
+		},
+		{
+			"name": "createMovies",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n    [\r\n        {\r\n            \"title\": \"Bugonia\",   \r\n            \"releaseYear\": \"2025\",    \r\n            \"genres\": [\"Science Fiction\", \"Comedy\"]\r\n        },\r\n        {\r\n            \"title\": \"The Fountain\",\r\n            \"releaseYear\": \"2006\",\r\n            \"genres\": [\"Science Fiction\",\"Romance\"]\r\n        },\r\n        {\r\n            \"title\": \"The Lord of the Rings: The Fellowship of the Ring\",    \r\n            \"releaseYear\": \"2001\",   \r\n            \"genres\": [\"Fantasy\", \"Adventure\"]\r\n        }\r\n    ]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/v1/movies/bulk",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						"bulk"
+					]
+				},
+				"description": "Creates multiple `Movie` resources based on provided **List** of `Movie`."
+			},
+			"response": []
+		},
+		{
+			"name": "getMovies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/v1/movies",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"movies"
+					],
+					"query": [
+						{
+							"key": "genre",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "releaseYear",
+							"value": "",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Gets a **List** of all `Movie`, with optional `releaseYear` and `genre` filters."
+			},
+			"response": []
+		},
+		{
+			"name": "updateMovie",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"releaseYear\": \"9999\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/v1/movies/:id",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				},
+				"description": "Updates a `Movie` resource."
+			},
+			"response": []
+		},
+		{
+			"name": "deleteMovie",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/v1/movies/:id",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"movies",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				},
+				"description": "Deletes a `Movie` resource."
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
