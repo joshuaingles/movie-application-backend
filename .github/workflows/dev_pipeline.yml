@@ -62,6 +62,6 @@ jobs:
 
           git checkout -b test origin/test
 
-          git merge origin/dev --no-ff --allow-unrelated-histories -m "Merge dev into test for promotion"
-
+          git merge -X theirs origin/dev --no-ff -m "Merge dev into test for promotion"
+          
           git push origin test
