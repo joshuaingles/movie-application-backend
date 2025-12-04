@@ -48,7 +48,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: test
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.CI_TRIGGER_TOKEN }}
 
       - name: Configure Git
         run: |
