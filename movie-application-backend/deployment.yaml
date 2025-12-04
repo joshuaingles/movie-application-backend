@@ -1,0 +1,31 @@
+# Kubernetes Deployment definition for the Spring Boot application
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-application-backend-deployment
+  labels:
+    app: movie-application-backend
+spec:
+  # Maintain 3 replicas for high availability
+  replicas: 3
+  selector:
+    matchLabels:
+      app: movie-application-backend
+  template:
+    metadata:
+      labels:
+        app: movie-application-backend
+    spec:
+      containers:
+      - name: spring-rest-container
+        image: movie-application-backend:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+          limits:
+            memory: "1Gi"
+            cpu: "1000m"

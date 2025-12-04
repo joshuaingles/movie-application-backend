@@ -50,6 +50,6 @@ Please ensure you have the following installed:
 2. ~~Create Postman collection~~
 3. ~~Create Documentation~~
 4. ~~Create tests~~
-5. Containerize Application with Docker
-6. Run on K8S Cluster
+5. ~~Containerize Application with Docker~~
+6. ~~Run on K8S Cluster~~
 7. Setup GitHub Actions

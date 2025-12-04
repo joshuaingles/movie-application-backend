@@ -1,0 +1,17 @@
+movie-application-backend/target/classes/io/github/joshuaingles/MovieApplicationBackend.class
+movie-application-backend/target/classes/io/github/joshuaingles/Controller/MovieController.class
+movie-application-backend/target/classes/io/github/joshuaingles/Entity/Movie.class
+movie-application-backend/target/classes/io/github/joshuaingles/Entity/Movie$MovieBuilder.class
+movie-application-backend/target/classes/io/github/joshuaingles/Repository/MovieRepository.class
+movie-application-backend/target/classes/io/github/joshuaingles/Service/MovieService.class
+movie-application-backend/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+movie-application-backend/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst
+movie-application-backend/target/surefire-reports/io.github.joshuaingles.MovieControllerUnitTest.txt
+movie-application-backend/target/surefire-reports/io.github.joshuaingles.MovieRepositoryUnitTest.txt
+movie-application-backend/target/surefire-reports/io.github.joshuaingles.MovieServiceUnitTest.txt
+movie-application-backend/target/surefire-reports/TEST-io.github.joshuaingles.MovieControllerUnitTest.xml
+movie-application-backend/target/surefire-reports/TEST-io.github.joshuaingles.MovieRepositoryUnitTest.xml
+movie-application-backend/target/surefire-reports/TEST-io.github.joshuaingles.MovieServiceUnitTest.xml
+movie-application-backend/target/test-classes/io/github/joshuaingles/MovieControllerUnitTest.class
+movie-application-backend/target/test-classes/io/github/joshuaingles/MovieRepositoryUnitTest.class
+movie-application-backend/target/test-classes/io/github/joshuaingles/MovieServiceUnitTest.class
