@@ -53,7 +53,15 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
 
-      - name: Push Changes to Test
+      - name: Promote to test
+        working-directory: movie-application-backend 
         run: |
           echo "Promoting changes from 'dev' to 'test' branch..."
-          git push origin dev:test
+        
+          git fetch origin
+    
+          git checkout test
+    
+          git merge origin/dev --no-ff -m "Merge dev into test for promotion"
+    
+          git push origin test
