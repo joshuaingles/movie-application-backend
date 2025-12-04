@@ -1,6 +1,6 @@
 # .github/workflows/staging_pipeline.yml
 
-name: 3. - Staging Pipeline
+name: 3. Staging Pipeline
 
 on:
   push:
@@ -46,8 +46,8 @@ jobs:
           context: movie-application-backend/
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/movie-application-backend:latest
-            ${{ secrets.DOCKER_USERNAME }}/movie-application-backend:${{ github.sha }}
+            ${{ secrets.DOCKER_USERNAME }}/movie-application-backend-module:latest
+            ${{ secrets.DOCKER_USERNAME }}/movie-application-backend-module:${{ github.sha }}
 
   # --------------------------------------------------------
   # JOB 2: Promote to Main
